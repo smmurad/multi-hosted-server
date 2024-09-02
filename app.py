@@ -8,7 +8,16 @@ instance_name = os.getenv('INSTANCE_NAME', 'DefaultInstance')
 
 @app.route('/')
 def hello_world():
-    return f'Hello {instance_name}!'
+    cow_art = """
+    <pre>
+     \\   ^__^
+      \\  (oo)\\_______
+         (__)\\       )\\/\\
+             ||----w |
+             ||     ||
+    </pre>
+    """
+    return f'<h1>Hello {instance_name}!</h1>{cow_art}'
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  # Default port is 5000 if not set
