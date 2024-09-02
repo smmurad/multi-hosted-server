@@ -8,7 +8,7 @@ instance_name = os.getenv('INSTANCE_NAME', 'DefaultInstance')
 
 @app.route('/')
 def hello_world():
-    return f'Hello: {instance_name}!'
+    return f'Hello {instance_name}!'
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  # Default port is 5000 if not set
