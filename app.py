@@ -20,6 +20,7 @@ def hello_world():
     return f'<h1>Hello {instance_name}!</h1>{cow_art}'
 
 if __name__ == '__main__':
+    print("Starting server...")
     port = int(os.getenv('PORT', 5000))  # Default port is 5000 if not set
     app.run(host='0.0.0.0', port=port)
 
