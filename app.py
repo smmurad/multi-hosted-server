@@ -19,7 +19,7 @@ def hello_world():
              ||     ||
     </pre>
     """
-    image_html = '<img src="/static/images/sigurd_er_best.png" alt="Sigurd er best">'
+    image_html = '<img src="/static/images/sigurd_er_best.png" alt="Sig the chief">'
     return f'<h1>Hei Leon!!!</h1>{cow_art}{image_html}'
 
 if __name__ == '__main__':
