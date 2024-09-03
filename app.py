@@ -14,21 +14,7 @@ def hello_world():
 
 @app.route('/test')
 def test():
-    return """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Test Page</title>
-    </head>
-    <body>
-        <h1>Test Page</h1>
-        <p>This is a test page for the Flask application.</p>
-        <p>Instance Name: {}</p>
-    </body>
-    </html>
-    """.format(instance_name)
+    return render_template('test.html')
 
 if __name__ == '__main__':
     print("Starting server...")
