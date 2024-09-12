@@ -18,6 +18,7 @@ def admin_routes(path):
 @app.route("/")
 @app.route("/<path:path>")
 def serve_react_app(path=""):
+    print("path", path)
     if path and (path != "favicon.ico"):
         print("found path", path)
         return send_from_directory(app.static_folder, path)

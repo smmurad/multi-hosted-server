@@ -35,11 +35,11 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://127.0.0.1:5001",
   "options": {
-    "proxy": "http://127.0.0.1:5001",
     "devServer": {
       "allowedHosts": [
-        "localhost", ".localhost"
+        "localhost", ".localhost", "127.0.0.1", "http://127.0.0.1"
       ]
     }
   } 
