@@ -3,7 +3,12 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder="static/build")
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3003"}})
+CORS(
+    app,
+    resources={
+        r"/api/*": {"origins": ["http://localhost:3003", "https://jallapenos.com"]}
+    },
+)
 
 
 # Backend API routes
