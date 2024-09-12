@@ -5,7 +5,7 @@ function App() {
 
   useEffect(() => {
     // Fetch data from the Flask backend
-    fetch('/api/data')
+    fetch(`${process.env.REACT_APP_API_URL}/api/data`)
       .then(response => response.json())
       .then(data => setMessage(data.message));
   }, []);
