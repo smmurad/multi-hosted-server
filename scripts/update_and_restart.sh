@@ -2,8 +2,8 @@
 
 # Define the project directory
 PROJECT_DIR="/opt/repos/multi-hosted-server"
-SUPERVISOR_SERVICE_NAMES=("frontend_server" "backend_server")
-
+# SUPERVISOR_SERVICE_NAMES=("frontend_server" "backend_server")
+SUPERVISOR_SERVICE_NAMES=("backend_server")
 # Navigate to the project directory
 cd $PROJECT_DIR || exit
 
