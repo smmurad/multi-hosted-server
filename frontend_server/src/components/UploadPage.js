@@ -33,7 +33,7 @@ function UploadPage() {
 
   return (
     <div>
-      <h2>Upload PNG</h2>
+      <h2>Upload Image</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="file"
