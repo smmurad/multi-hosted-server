@@ -70,6 +70,7 @@ def admin_routes(path):
 
 @app.route("/api/images", methods=["GET"])
 def get_image_names():
+    print("get_image_names")
     if not os.path.exists(app.config["UPLOAD_FOLDER"]):
         return jsonify({"error": "Upload folder does not exist"}), 404
 
@@ -77,17 +78,6 @@ def get_image_names():
         f for f in os.listdir(app.config["UPLOAD_FOLDER"]) if f.lower().endswith(".png")
     ]
     return jsonify({"images": image_files}), 200
-
-
-@app.route("/")
-@app.route("/<path:path>")
-def serve_react_app(path=""):
-    print("path", path)
-    if path and (path != "favicon.ico"):
-        print("found path", path)
-        return send_from_directory(app.static_folder, path)
-    print("hello")
-    return send_from_directory(app.static_folder, "index.html")
 
 
 if __name__ == "__main__":
