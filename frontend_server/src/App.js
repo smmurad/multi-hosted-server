@@ -4,6 +4,15 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import UploadPage from './components/UploadPage';
 
 function App() {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    // Fetch data from the Flask backend
+    fetch(`${process.env.REACT_APP_API_URL}/api/data`)
+      .then(response => response.json())
+      .then(data => console.log(data));
+  }, []);
+
   return (
     <Router>
       <div>
@@ -25,7 +34,7 @@ function App() {
           </Route>
           {/* ... other routes ... */}
           <Route path="/upload">
-            <UploadPage />
+            {/* <UploadPage /> */}
           </Route>
         </Switch>
       </div>
