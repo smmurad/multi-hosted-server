@@ -10,16 +10,14 @@ function ImageList() {
 
   const fetchImages = async () => {
     try {
-    //   const response = await fetch('http://localhost:5001/api/images');
-      const response = await fetch('http://localhost:5001/api/data');
-
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/images`);
       console.log('fetchImages response:', response);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
       console.log('fetchImages data:', data);
-    //   setImages(data.images);
+      setImages(data.images);
     } catch (error) {
       console.error('Error fetching images:', error);
     }
@@ -27,7 +25,7 @@ function ImageList() {
 
   const handleImageClick = async (imageName) => {
     try {
-      const response = await fetch('http://localhost:5001/api/process_image', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/process_image`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
