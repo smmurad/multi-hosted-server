@@ -43,12 +43,19 @@ def upload_file():
 
 
 # Backend API routes
-@app.route("/api/process_image")
+@app.route("/api/process_image", methods=["POST"])
 def process_image():
-    filename = "/home/myuser/images/img_to_text.png"
-    img1 = np.array(Image.open(filename))
-    text = pytesseract.image_to_string(img1)
-    return jsonify({"text:": text})
+    data = request.json
+    if not data or "filename" not in data:
+        return jsonify({"error": "No filename provided"}), 400
+
+    filename = os.path.join(app.config["UPLOAD_FOLDER"], data["filename"])
+    if not os.path.exists(filename):
+        return jsonify({"error": "File not found"}), 404
+
+    img = np.array(Image.open(filename))
+    text = pytesseract.image_to_string(img)
+    return jsonify({"text": text})
 
 
 # Backend API routes
@@ -60,6 +67,17 @@ def api_routes():
 @app.route("/admin/<path:path>", methods=["GET", "POST"])
 def admin_routes(path):
     return f"Admin route: {path}"
+
+
+@app.route("/api/images", methods=["GET"])
+def get_image_names():
+    if not os.path.exists(app.config["UPLOAD_FOLDER"]):
+        return jsonify({"error": "Upload folder does not exist"}), 404
+
+    image_files = [
+        f for f in os.listdir(app.config["UPLOAD_FOLDER"]) if f.lower().endswith(".png")
+    ]
+    return jsonify({"images": image_files}), 200
 
 
 @app.route("/")

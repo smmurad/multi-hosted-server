@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ImageList from './ImageList';
 
 function UploadPage() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -42,6 +43,8 @@ function UploadPage() {
         <button type="submit">Upload</button>
       </form>
       {message && <p>{message}</p>}
+      
+      <ImageList />
     </div>
   );
 }
