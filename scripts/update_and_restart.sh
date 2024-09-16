@@ -27,7 +27,7 @@ else
     # mvn clean install
     # etc.
     # Example:
-    scripts/build.sh
+    # scripts/build.sh
 
     # Restart the project using Supervisor
     for service in "${SUPERVISOR_SERVICE_NAMES[@]}"
