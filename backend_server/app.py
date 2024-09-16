@@ -2,6 +2,11 @@ from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 import os
 
+# Import for image processing
+from PIL import Image
+import pytesseract
+import numpy as np
+
 app = Flask(__name__, static_folder="static/build")
 CORS(
     app,
@@ -9,6 +14,15 @@ CORS(
         r"/api/*": {"origins": ["http://localhost:3003", "https://jallapenos.com"]}
     },
 )
+
+
+# Backend API routes
+@app.route("/process_image")
+def process_image():
+    filename = "img_to_text.png"
+    img1 = np.array(Image.open(filename))
+    text = pytesseract.image_to_string(img1)
+    return jsonify({"text": text})
 
 
 # Backend API routes
