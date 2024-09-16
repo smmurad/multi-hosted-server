@@ -22,7 +22,7 @@ def process_image():
     filename = "img_to_text.png"
     img1 = np.array(Image.open(filename))
     text = pytesseract.image_to_string(img1)
-    return jsonify({"text": text})
+    return jsonify({"text:": text})
 
 
 # Backend API routes
