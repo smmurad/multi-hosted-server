@@ -9,13 +9,12 @@ import pytesseract
 import numpy as np
 
 app = Flask(__name__, static_folder="static/build")
-# CORS(
-#     app,
-#     resources={
-#         r"/api/*": {"origins": ["http://localhost:3003", "http://jallapenos.com"]}
-#     },
-# )
-CORS(app)
+CORS(
+    app,
+    resources={
+        r"/api/*": {"origins": ["http://localhost:3003", "https://jallapenos.com"]}
+    },
+)
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = {"png"}
 
