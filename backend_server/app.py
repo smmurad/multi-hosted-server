@@ -61,7 +61,7 @@ def process_image():
 # Backend API routes
 @app.route("/api/data", methods=["GET", "POST"])
 def api_routes():
-    return jsonify({"message": "data from backend"})
+    return jsonify({"message": "new data from backend"})
 
 
 @app.route("/admin/<path:path>", methods=["GET", "POST"])
