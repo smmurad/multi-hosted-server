@@ -10,13 +10,16 @@ function ImageList() {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('http://localhost:5001/api/images');
+    //   const response = await fetch('http://localhost:5001/api/images');
+      const response = await fetch('http://localhost:5001/api/data');
+
       console.log('fetchImages response:', response);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setImages(data.images);
+      console.log('fetchImages data:', data);
+    //   setImages(data.images);
     } catch (error) {
       console.error('Error fetching images:', error);
     }
