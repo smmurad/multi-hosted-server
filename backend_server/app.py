@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 import os
+from werkzeug.utils import secure_filename
 
 # Import for image processing
 from PIL import Image
@@ -15,9 +16,34 @@ CORS(
     },
 )
 
+UPLOAD_FOLDER = "uploads"
+ALLOWED_EXTENSIONS = {"png"}
+
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route("/api/upload", methods=["POST"])
+def upload_file():
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    file = request.files["file"]
+    if file.filename == "":
+        return jsonify({"error": "No selected file"}), 400
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        if not os.path.exists(app.config["UPLOAD_FOLDER"]):
+            os.makedirs(app.config["UPLOAD_FOLDER"])
+        file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+        return jsonify({"message": "File uploaded successfully"}), 200
+    return jsonify({"error": "File type not allowed"}), 400
+
 
 # Backend API routes
-@app.route("/process_image")
+@app.route("/api/process_image")
 def process_image():
     filename = "/home/myuser/images/img_to_text.png"
     img1 = np.array(Image.open(filename))
