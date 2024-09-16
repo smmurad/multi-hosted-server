@@ -9,14 +9,20 @@ function App() {
       <div>
         <nav>
           <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {/* ... other navigation items ... */}
             <li>
-              <Link to="/upload">Upload PNG</Link>
+              <Link to="/upload">Upload for OCR</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
+          <Route exact path="/">
+            <h1>Welcome to the Home Page</h1>
+          </Route>
           {/* ... other routes ... */}
           <Route path="/upload">
             <UploadPage />
