@@ -12,9 +12,18 @@ app = Flask(__name__, static_folder="static/build")
 CORS(
     app,
     resources={
-        r"/api/*": {"origins": ["http://localhost:3003", "https://jallapenos.com"]}
+        r"/api/*": {
+            "origins": [
+                "http://localhost:3003",
+                "http://jallapenos.com",
+                "https://jallapenos.com",
+                "http://*.jallapenos.com",
+                "https://*.jallapenos.com",
+            ]
+        }
     },
 )
+
 UPLOAD_FOLDER = "uploads"
 ALLOWED_EXTENSIONS = {"png"}
 
