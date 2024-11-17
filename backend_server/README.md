@@ -20,7 +20,7 @@ This project is a Flask application designed to run multiple instances with diff
 The recommended way to run the instances is using Supervisor: `supervisorctl start my_flask_app`
 
 
-The Supervisor configuration for `my_flask_app` is defined in: `/etc/supervisor/conf.d/my_flask_app`
+The Supervisor configuration for `my_flask_app` is defined in: `/etc/supervisor/conf.d/backend_server.conf`
 
 
 ## Nginx Reverse Proxy
