@@ -14,14 +14,14 @@ function App() {
             </li>
             {/* ... other navigation items ... */}
             <li>
-              <Link to="/upload">Upload for OCR</Link>
+              <Link to="/upload">Upload for Image Recognition</Link>
             </li>
           </ul>
         </nav>
 
         <Switch>
           <Route exact path="/">
-            <h1>Welcome to the Home Page</h1>
+            <h1>Welcome to the Home Page. Just testing</h1>
           </Route>
           {/* ... other routes ... */}
           <Route path="/upload">
